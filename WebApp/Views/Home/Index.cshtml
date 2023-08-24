@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    if(ViewBag.Indice == true)
+    {
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Excel para JSON</h5>
+                        <p class="card-text">Lê o conteúdo de uma planilha XLSX e tranforma em JSON</p>
+                        <a href="/XlsToJson" class="btn btn-primary">Começar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        return;
+    }
+
+    if(ViewBag.Erro != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.Erro
+        </div>
+    }
+}
+<form asp-action="@ViewBag.Action" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <div class="mb-3">
+            <label for="file" class="form-label">Arquivo</label>
+            <input class="form-control" type="file" id="file" name="file">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+@if(ViewBag.Resultado != null)
+{
+    <form>
+        <div class="mb-3">
+            <div class="mb-3">
+                <label for="resultado" class="form-label">Resultado</label>
+                <textarea class="form-control overflow-scroll" type="file" id="resultado" name="resultado" rows="10">@ViewBag.Resultado</textarea>
+            </div>
+        </div>
+    </form>
+}
